@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MyQucikStartApplication {
 
 	public static void main(String[] args) {
+		
 		SpringApplication.run(MyQucikStartApplication.class, args);
 	}
 
