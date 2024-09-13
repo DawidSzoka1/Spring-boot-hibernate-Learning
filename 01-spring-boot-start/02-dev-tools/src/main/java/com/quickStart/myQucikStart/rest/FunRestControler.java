@@ -22,4 +22,9 @@ public class FunRestControler {
         return "Hello world! " + coachName + " " + test + " port = " + port + " " + parem + one_more;
     }
 
+    @GetMapping("/")
+    public String sayHello() {
+        return "sayHello ";
+    }
+
 }

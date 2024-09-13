@@ -42,11 +42,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		<!--automatycznie odswieza strone gdy jest dodany nowy kod-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-devtools</artifactId>
-		</dependency>
 	</dependencies>
 
 	<build>
