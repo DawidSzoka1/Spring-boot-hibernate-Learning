@@ -10,10 +10,17 @@ public class DemoController {
 
     private Coach myCoach;
 
+    // constructor injection
+//    @Autowired
+//    public DemoController(@Qualifier("cricketCoach")Coach coach) {
+//        //firs letter lower case then as in name of the class
+//        myCoach = coach;
+//    }
+
+    //setter injection
     @Autowired
-    public DemoController(@Qualifier("cricketCoach")Coach coach) {
-        //firs letter lower case then as in name of the class
-        myCoach = coach;
+    public void setMyCoach(@Qualifier("footballCoach") Coach myCoach) {
+        this.myCoach = myCoach;
     }
 
     @GetMapping("/dailyworkout")
