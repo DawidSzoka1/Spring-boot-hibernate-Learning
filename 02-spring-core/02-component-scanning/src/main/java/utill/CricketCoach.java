@@ -1,4 +1,4 @@
-package com.scanningcomponent._02componentscanning.common;
+package utill;
 
 
 import org.springframework.stereotype.Component;
