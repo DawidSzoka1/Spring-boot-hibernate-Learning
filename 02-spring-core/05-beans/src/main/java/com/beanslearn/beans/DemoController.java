@@ -12,8 +12,8 @@ public class DemoController {
 
     @Autowired
     public DemoController(
-            @Qualifier("cricketCoach")Coach coach,
-            @Qualifier("cricketCoach")Coach anotherCoach
+            @Qualifier("cricketCoach") Coach coach,
+            @Qualifier("cricketCoach") Coach anotherCoach
     ) {
         myCoach = coach;
         this.anotherCoach = anotherCoach;
@@ -21,7 +21,7 @@ public class DemoController {
 
     @GetMapping("/check")
     public String getWorkout() {
-        return "Comparing two beans: myCoach == anotherCoach: " + (myCoach.equals(anotherCoach) );
+        return "Comparing two beans: myCoach == anotherCoach: " + (myCoach == anotherCoach);
     }
 
 }
