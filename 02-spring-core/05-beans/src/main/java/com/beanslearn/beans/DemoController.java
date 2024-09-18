@@ -12,7 +12,7 @@ public class DemoController {
 
     @Autowired
     public DemoController(
-            @Qualifier("coachSwim") Coach coach,//name of @Bean in SportConfig not a name of class
+            @Qualifier("customid") Coach coach,//name of @Bean in SportConfig not a name of class or a custom one
             @Qualifier("cricketCoach") Coach anotherCoach
     ) {
         myCoach = coach;
