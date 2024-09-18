@@ -13,13 +13,15 @@ public class PostPreCoach implements Coach {
         return "post pre coach";
     }
 
+    //init method
     @PostConstruct
     public void init() {
         System.out.println("PostConstruct: " + this.getClass().getSimpleName());
     }
 
+    //destroy method
     @PreDestroy
-    public void destroy() {
+    public void predestroy() {
         System.out.println("PreDestroy: " + this.getClass().getSimpleName());
     }
 
