@@ -13,7 +13,11 @@ public class PostPreCoach implements Coach {
         return "post pre coach";
     }
 
-    //init method
+    public PostPreCoach(){
+        System.out.println("Post Pre Coach: " + this.getClass().getSimpleName());
+    }
+
+    //init method runs after the constructor
     @PostConstruct
     public void init() {
         System.out.println("PostConstruct: " + this.getClass().getSimpleName());
