@@ -12,7 +12,7 @@ public class DemoController {
 
     @Autowired
     public DemoController(
-            @Qualifier("cricketCoach") Coach coach,
+            @Qualifier("coachSwim") Coach coach,//name of @Bean in SportConfig not a name of class
             @Qualifier("cricketCoach") Coach anotherCoach
     ) {
         myCoach = coach;
@@ -22,6 +22,11 @@ public class DemoController {
     @GetMapping("/check")
     public String getWorkout() {
         return "Comparing two beans: myCoach == anotherCoach: " + (myCoach == anotherCoach);
+    }
+
+    @GetMapping("/dailyworkout")
+    public String getDailyWorkout() {
+        return myCoach.getDailyWorkout();
     }
 
 }

@@ -13,6 +13,7 @@ public class PostPreCoach implements Coach {
         return "post pre coach";
     }
 
+
     public PostPreCoach(){
         System.out.println("Post Pre Coach: " + this.getClass().getSimpleName());
     }
@@ -23,7 +24,7 @@ public class PostPreCoach implements Coach {
         System.out.println("PostConstruct: " + this.getClass().getSimpleName());
     }
 
-    //destroy method
+    //destroy method won't be called if scope is 'prototype'
     @PreDestroy
     public void predestroy() {
         System.out.println("PreDestroy: " + this.getClass().getSimpleName());
