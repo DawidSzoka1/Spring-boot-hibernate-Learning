@@ -1,6 +1,7 @@
 package com.core.qualifiers.imp;
 
 import com.core.qualifiers.Coach;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 

@@ -1,9 +1,11 @@
 package com.core.qualifiers.imp;
 
 import com.core.qualifiers.Coach;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
 @Component
+@Lazy
 public class TenisCoach implements Coach {
 
     public TenisCoach() {

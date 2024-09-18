@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 public class BaseballCoach  implements Coach {
 
     public BaseballCoach() {
-        System.out.println("In constructor: " + getClass().getSimpleName());
+        System.out.println("In constructor: " + getClass().getName());
     }
 
     @Override
