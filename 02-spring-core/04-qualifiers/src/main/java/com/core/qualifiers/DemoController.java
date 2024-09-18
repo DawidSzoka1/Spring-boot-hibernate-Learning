@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class DemoController {
 
     private Coach myCoach;
-
+    private final String qualifier = "baseballCoach";
     // constructor injection
 //    @Autowired
 //    public DemoController(@Qualifier("cricketCoach")Coach coach) {
@@ -19,7 +19,7 @@ public class DemoController {
 
     //setter injection
     @Autowired
-    public void setMyCoach(@Qualifier("footballCoach") Coach myCoach) {
+    public void setMyCoach(@Qualifier(qualifier) Coach myCoach) {
         this.myCoach = myCoach;
     }
 
