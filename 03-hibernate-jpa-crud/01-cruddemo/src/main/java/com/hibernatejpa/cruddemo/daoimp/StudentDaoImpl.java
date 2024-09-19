@@ -11,16 +11,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Repository//sub class of Component
 public class StudentDaoImpl implements StudentDao {
 
-    private EntityManager em;
+    private EntityManager entityManager;
 
     @Autowired
-    public StudentDaoImpl(EntityManager em) {
-        this.em = em;
+    public StudentDaoImpl(EntityManager entityManager) {
+        this.entityManager = entityManager;
     }
 
     @Override
     @Transactional
     public void save(Student student) {
-        em.persist(student);
+        entityManager.persist(student);
     }
 }
