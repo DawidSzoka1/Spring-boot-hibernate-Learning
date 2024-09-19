@@ -1,5 +1,7 @@
 package com.hibernatejpa.cruddemo;
 
+import com.hibernatejpa.cruddemo.dao.StudentDao;
+import com.hibernatejpa.cruddemo.entity.Student;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -13,9 +15,22 @@ public class CruddemoApplication {
     }
 
     @Bean
-    public CommandLineRunner commandLineRunner() {
-        return _ -> {
-            System.out.println("Hello World");
-        };
+    public CommandLineRunner commandLineRunner(StudentDao studentDao) {
+        return _ -> createStudent(studentDao);
+    }
+
+    private void createStudent(StudentDao studentDao) {
+
+        // creating new student
+        System.out.println("Creating student...");
+        Student student = new Student("Name", "Last", "email@email.com");
+
+        // save the student using DAO
+        System.out.println("Saving student...");
+        studentDao.save(student);
+
+        System.out.println("Saved student, Generated id: " + student.getId());
+        System.out.println(student);
+
     }
 }
