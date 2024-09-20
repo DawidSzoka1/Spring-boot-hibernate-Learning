@@ -7,7 +7,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.List;
 
 @SpringBootApplication
 public class CruddemoApplication {
@@ -18,7 +17,7 @@ public class CruddemoApplication {
 
     @Bean
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {//Bean inject StudentDAO
-        return _ -> createMultipleStudents(studentDAO);
+        return _ -> readStudent(studentDAO);
     }
 
     private void createMultipleStudents(StudentDAO studentDAO) {
@@ -46,5 +45,11 @@ public class CruddemoApplication {
         System.out.println("Saved student, Generated id: " + student.getId());
         System.out.println(student);
 
+    }
+
+    private void readStudent(StudentDAO studentDAO) {
+        System.out.println("Reading student...");
+        Student s1 = studentDAO.getStudentById(1);
+        System.out.println(s1);
     }
 }

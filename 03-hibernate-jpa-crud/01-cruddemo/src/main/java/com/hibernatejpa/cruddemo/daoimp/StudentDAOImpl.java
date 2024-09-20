@@ -19,8 +19,13 @@ public class StudentDAOImpl implements StudentDAO {
     }
 
     @Override
-    @Transactional
+    @Transactional//only if we performe some update in database
     public void save(Student student) {
         entityManager.persist(student);
+    }
+
+    @Override
+    public Student getStudentById(int id) {
+        return entityManager.find(Student.class, id);//if not find return null
     }
 }
