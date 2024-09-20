@@ -43,7 +43,7 @@ public class StudentDAOImpl implements StudentDAO {
                 "FROM Student WHERE firstName like :first and lastName like :last",
                 Student.class
         );
-        query.setParameter("first", firstName).setParameter("last", lastName);
+        query.setParameter("first", firstName + "%").setParameter("last", lastName + "%");
 
         return query.getResultList();
     }
