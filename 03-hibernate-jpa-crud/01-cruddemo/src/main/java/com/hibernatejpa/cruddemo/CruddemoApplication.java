@@ -19,7 +19,7 @@ public class CruddemoApplication {
 
     @Bean
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {//Bean inject StudentDAO
-        return _ -> getAllByName(studentDAO);
+        return _ -> updateStudent(studentDAO);
     }
 
     private void createMultipleStudents(StudentDAO studentDAO) {
@@ -67,5 +67,15 @@ public class CruddemoApplication {
         List<Student> students = studentDAO.getAllStudentsByName("Name", "Last");
         System.out.println(students.size());
         System.out.println(students);
+    }
+
+    private void updateStudent(StudentDAO studentDAO) {
+        System.out.println("Updating student...");
+        Student student = studentDAO.getStudentById(1);
+        student.setFirstName("changed");
+        student.setLastName("changed");
+        studentDAO.update(student);
+        System.out.println("Updated student, Generated id: " + student.getId());
+        System.out.println(student);
     }
 }
