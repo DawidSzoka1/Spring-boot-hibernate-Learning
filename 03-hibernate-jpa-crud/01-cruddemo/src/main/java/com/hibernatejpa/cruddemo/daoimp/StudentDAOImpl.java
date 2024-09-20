@@ -70,9 +70,7 @@ public class StudentDAOImpl implements StudentDAO {
 //        ).executeUpdate();
         //Update means modifying database
 
-        Student student = entityManager.find(Student.class, id);
-
-        entityManager.remove(student);
+        entityManager.remove(entityManager.find(Student.class, id));
 
     }
 }
