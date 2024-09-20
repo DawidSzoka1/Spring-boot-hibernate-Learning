@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 
 @SpringBootApplication
 public class CruddemoApplication {
@@ -17,7 +19,7 @@ public class CruddemoApplication {
 
     @Bean
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {//Bean inject StudentDAO
-        return _ -> readStudent(studentDAO);
+        return _ -> getAllByName(studentDAO);
     }
 
     private void createMultipleStudents(StudentDAO studentDAO) {
@@ -51,5 +53,19 @@ public class CruddemoApplication {
         System.out.println("Reading student...");
         Student s1 = studentDAO.getStudentById(1);
         System.out.println(s1);
+    }
+
+    private void readAllStudents(StudentDAO studentDAO) {
+        System.out.println("Reading all students...");
+        List<Student> students = studentDAO.getAllStudents();
+        System.out.println(students.size());
+        System.out.println(students);
+    }
+
+    private void getAllByName(StudentDAO studentDAO) {
+        System.out.println("Reading all students by name...");
+        List<Student> students = studentDAO.getAllStudentsByName("Name", "Last");
+        System.out.println(students.size());
+        System.out.println(students);
     }
 }
