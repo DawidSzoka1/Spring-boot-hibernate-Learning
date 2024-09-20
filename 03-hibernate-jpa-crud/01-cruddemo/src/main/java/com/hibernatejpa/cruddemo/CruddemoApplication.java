@@ -81,7 +81,12 @@ public class CruddemoApplication {
 
     private void deleteUser(StudentDAO studentDAO) {
         System.out.println("Deleting student...");
-        studentDAO.delete(1);
-        System.out.println("deleted user");
+        Student student = studentDAO.getStudentById(1);
+        if(student != null) {
+            studentDAO.delete(1);
+            System.out.println("deleted user");
+        }else{
+            System.out.println("user not found");
+        }
     }
 }

@@ -71,11 +71,8 @@ public class StudentDAOImpl implements StudentDAO {
         //Update means modifying database
 
         Student student = entityManager.find(Student.class, id);
-        if(student != null) {
-            entityManager.remove(student);
-        }
-        else{
-            System.out.println("Student not found");
-        }
+
+        entityManager.remove(student);
+
     }
 }
