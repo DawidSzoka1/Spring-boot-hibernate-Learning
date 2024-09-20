@@ -34,7 +34,9 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public List<Student> getAllStudents() {
-        return entityManager.createQuery("FROM Student", Student.class).getResultList();
+        // order by x desc descending
+        // order by x asc ascending
+        return entityManager.createQuery("FROM Student order by lastName desc", Student.class).getResultList();
     }
 
     @Override
