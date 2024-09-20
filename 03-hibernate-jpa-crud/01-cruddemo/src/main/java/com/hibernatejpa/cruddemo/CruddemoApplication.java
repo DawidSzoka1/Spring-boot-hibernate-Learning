@@ -19,7 +19,7 @@ public class CruddemoApplication {
 
     @Bean
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {//Bean inject StudentDAO
-        return _ -> updateStudent(studentDAO);
+        return _ -> deleteUser(studentDAO);
     }
 
     private void createMultipleStudents(StudentDAO studentDAO) {
@@ -77,5 +77,11 @@ public class CruddemoApplication {
         studentDAO.update(student);
         System.out.println("Updated student, Generated id: " + student.getId());
         System.out.println(student);
+    }
+
+    private void deleteUser(StudentDAO studentDAO) {
+        System.out.println("Deleting student...");
+        studentDAO.delete(1);
+        System.out.println("deleted user");
     }
 }
