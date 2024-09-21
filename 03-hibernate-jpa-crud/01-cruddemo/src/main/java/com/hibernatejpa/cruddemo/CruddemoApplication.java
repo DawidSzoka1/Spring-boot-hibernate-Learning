@@ -19,7 +19,7 @@ public class CruddemoApplication {
 
     @Bean
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {//Bean inject StudentDAO
-        return _ -> deleteUser(studentDAO);
+        return _ -> createMultipleStudents(studentDAO);
     }
 
     private void createMultipleStudents(StudentDAO studentDAO) {
