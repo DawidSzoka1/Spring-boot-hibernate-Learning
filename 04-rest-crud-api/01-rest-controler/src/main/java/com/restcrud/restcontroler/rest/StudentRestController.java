@@ -9,16 +9,19 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class StudentRestController {
-
-    @GetMapping("/students")
-    public List<Student> getStudents() {
+    public List<Student> getStudentsList(){
         List<Student> students = new ArrayList<>();
-
         students.add(new Student("first", "last"));
         students.add(new Student("Mario", "Ball"));
         students.add(new Student("first", "leo"));
-        //spring will use jackson to convert it to json using getters from student class
         return students;
+    }
+
+    @GetMapping("/students")
+    public List<Student> getStudents() {
+
+        //spring will use jackson to convert it to json using getters from student class
+        return getStudentsList();
     }
 
     @GetMapping("/student/name/{name}")
@@ -27,10 +30,7 @@ public class StudentRestController {
 //            @RequestParam("firstName") String name
             @PathVariable String name
     ) {
-        List<Student> students = new ArrayList<>();
-        students.add(new Student("first", "last"));
-        students.add(new Student("Mario", "Ball"));
-        students.add(new Student("first", "leo"));
+        List<Student> students = getStudentsList();
         List<Student> namein = new ArrayList<>();
         for(Student student : students) {
             if(student.getFirstName().equals(name)) {
@@ -43,10 +43,7 @@ public class StudentRestController {
 
     @GetMapping("student/{id}")
     public Student getStudent(@PathVariable int id) {
-        List<Student> students = new ArrayList<>();
-        students.add(new Student("first", "last"));
-        students.add(new Student("Mario", "Ball"));
-        students.add(new Student("first", "leo"));
+        List<Student> students = getStudentsList();
         if(id > students.size()) {
             return null;
         }
