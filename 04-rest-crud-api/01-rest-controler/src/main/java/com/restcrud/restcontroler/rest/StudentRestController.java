@@ -21,7 +21,7 @@ public class StudentRestController {
         return students;
     }
 
-    @GetMapping("/student/{name}")
+    @GetMapping("/student/name/{name}")
     public List<Student> getStudentsByName(
             // type ?firstName=value after path
 //            @RequestParam("firstName") String name
@@ -39,5 +39,17 @@ public class StudentRestController {
         }
 
         return namein;
+    }
+
+    @GetMapping("student/{id}")
+    public Student getStudent(@PathVariable int id) {
+        List<Student> students = new ArrayList<>();
+        students.add(new Student("first", "last"));
+        students.add(new Student("Mario", "Ball"));
+        students.add(new Student("first", "leo"));
+        if(id > students.size()) {
+            return null;
+        }
+        return students.get(id);
     }
 }
