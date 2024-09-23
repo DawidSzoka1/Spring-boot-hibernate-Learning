@@ -1,6 +1,7 @@
 package com.restcrud.restcontroler.rest;
 
 import com.restcrud.restcontroler.entity.Student;
+import jakarta.annotation.PostConstruct;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -9,19 +10,22 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class StudentRestController {
-    public List<Student> getStudentsList(){
-        List<Student> students = new ArrayList<>();
-        students.add(new Student("first", "last"));
-        students.add(new Student("Mario", "Ball"));
-        students.add(new Student("first", "leo"));
-        return students;
+    private List<Student> theStudents;
+
+    //load students only once with is better than every time someone visits this page
+    @PostConstruct
+    public void loadStudents() {
+        theStudents = new ArrayList<>();
+        theStudents.add(new Student("first", "last"));
+        theStudents.add(new Student("first", "mario"));
+        theStudents.add(new Student("tom", "last"));
     }
 
     @GetMapping("/students")
     public List<Student> getStudents() {
 
         //spring will use jackson to convert it to json using getters from student class
-        return getStudentsList();
+        return theStudents;
     }
 
     @GetMapping("/student/name/{name}")
@@ -30,9 +34,8 @@ public class StudentRestController {
 //            @RequestParam("firstName") String name
             @PathVariable String name
     ) {
-        List<Student> students = getStudentsList();
         List<Student> namein = new ArrayList<>();
-        for(Student student : students) {
+        for(Student student : theStudents) {
             if(student.getFirstName().equals(name)) {
                 namein.add(student);
             }
@@ -43,10 +46,9 @@ public class StudentRestController {
 
     @GetMapping("student/{id}")
     public Student getStudent(@PathVariable int id) {
-        List<Student> students = getStudentsList();
-        if(id > students.size()) {
+        if(id >= theStudents.size() || id < 0) {
             return null;
         }
-        return students.get(id);
+        return theStudents.get(id);
     }
 }
