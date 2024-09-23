@@ -61,12 +61,17 @@ public class StudentRestController {
                 exp.getMessage(),
                 System.currentTimeMillis()
         );
-
-
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler
+    public ResponseEntity<StudentErrorResponse> handleException(Exception exp) {
+        StudentErrorResponse response = new StudentErrorResponse(
+                HttpStatus.BAD_REQUEST.value(),
+                exp.getMessage(),
+                System.currentTimeMillis()
+        );
+
+        return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
+    }
 }
-
-
-
