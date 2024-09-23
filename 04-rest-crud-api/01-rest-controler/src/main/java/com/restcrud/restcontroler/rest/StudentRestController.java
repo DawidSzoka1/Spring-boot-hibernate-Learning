@@ -2,6 +2,8 @@ package com.restcrud.restcontroler.rest;
 
 import com.restcrud.restcontroler.entity.Student;
 import jakarta.annotation.PostConstruct;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -47,8 +49,24 @@ public class StudentRestController {
     @GetMapping("student/{id}")
     public Student getStudent(@PathVariable int id) {
         if(id >= theStudents.size() || id < 0) {
-            return null;
+            throw new StudentNotFoundException("Student with that id doesnt exists " + id);
         }
         return theStudents.get(id);
     }
+
+    @ExceptionHandler
+    public ResponseEntity<StudentErrorResponse> handleException(StudentNotFoundException exp) {
+        StudentErrorResponse response = new StudentErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                exp.getMessage(),
+                System.currentTimeMillis()
+        );
+
+
+        return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+    }
+
 }
+
+
+
