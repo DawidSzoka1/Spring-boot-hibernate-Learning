@@ -5,9 +5,9 @@ import com.restcrud.fullcrudwithdb.entity.Employee;
 import java.util.List;
 
 public interface EmployeeDAO {
-    public List<Employee> getAllEmployees();
-    public Employee getEmployee(int id);
-    public void addEmployee(Employee employee);
-    public void updateEmployee(int id, Employee employee);
-    public void deleteEmployee(int id);
+    List<Employee> getAllEmployees();
+    Employee getEmployee(int id);
+    void addEmployee(Employee employee);
+    void updateEmployee(Employee employee);
+    void deleteEmployee(int id);
 }
