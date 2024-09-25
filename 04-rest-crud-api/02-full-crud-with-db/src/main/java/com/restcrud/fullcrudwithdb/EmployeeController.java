@@ -35,11 +35,23 @@ public class EmployeeController {
 
     @PostMapping("/employees")
     public Employee addEmployee(@RequestBody Employee employee){
+        //making sure that we add employee not update
+        employee.setId(0);
         return employeeService.saveEmployee(employee);
     }
 
     @PutMapping("/employees")
     public Employee updateEmployee(@RequestBody Employee employee){
+        //throwing error when id == 0 to make sure we update and not add employee
+        if(employee.getId() == 0){
+            throw new RuntimeException("Employee not found--");
+        }
+
+        //making sure that the employee exists
+        Employee employee1 = employeeService.getEmployee(employee.getId());
+        if(employee1 == null){
+            throw new RuntimeException("Employee not found--" + employee.getId());
+        }
         return employeeService.saveEmployee(employee);
     }
 
