@@ -3,16 +3,18 @@ package com.restcrud.fullcrudwithdb.DAOImpl;
 import com.restcrud.fullcrudwithdb.DAO.EmployeeDAO;
 import com.restcrud.fullcrudwithdb.entity.Employee;
 import jakarta.persistence.EntityManager;
-import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 
-@Controller
+@Repository
 public class EmployeeDAOImpl implements EmployeeDAO {
     private EntityManager em;
 
+    @Autowired
     public EmployeeDAOImpl(EntityManager em) {
         this.em = em;
     }
