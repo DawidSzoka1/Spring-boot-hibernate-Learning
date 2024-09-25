@@ -3,6 +3,7 @@ package com.restcrud.fullcrudwithdb;
 
 import com.restcrud.fullcrudwithdb.DAO.EmployeeDAO;
 import com.restcrud.fullcrudwithdb.entity.Employee;
+import com.restcrud.fullcrudwithdb.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,20 +15,20 @@ import java.util.List;
 @RestController
 @RequestMapping("/api")
 public class EmployeeController {
-    private EmployeeDAO employeeDAO;
+    private EmployeeService employeeService;
 
     @Autowired
-    public EmployeeController(EmployeeDAO employeeDAO) {
-        this.employeeDAO = employeeDAO;
+    public EmployeeController(EmployeeService employeeService) {
+        this.employeeService = employeeService;
     }
 
     @GetMapping("/employees")
     public List<Employee> getAllEmployees(){
-        return employeeDAO.getAllEmployees();
+        return employeeService.getAllEmployees();
     }
 
     @GetMapping("/employees/{id}")
     public Employee getEmployeeById(@PathVariable int id){
-        return employeeDAO.getEmployee(id);
+        return employeeService.getEmployee(id);
     }
 }
