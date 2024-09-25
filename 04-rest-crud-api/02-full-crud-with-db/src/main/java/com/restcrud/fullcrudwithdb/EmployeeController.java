@@ -1,14 +1,9 @@
 package com.restcrud.fullcrudwithdb;
 
-
-import com.restcrud.fullcrudwithdb.DAO.EmployeeDAO;
 import com.restcrud.fullcrudwithdb.entity.Employee;
 import com.restcrud.fullcrudwithdb.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,6 +24,34 @@ public class EmployeeController {
 
     @GetMapping("/employees/{id}")
     public Employee getEmployeeById(@PathVariable int id){
-        return employeeService.getEmployee(id);
+        Employee employee = employeeService.getEmployee(id);
+
+        if(employee == null){
+            throw new RuntimeException("Employee not found--" + id);
+        }
+
+        return employee;
     }
+
+    @PostMapping("/employees")
+    public Employee addEmployee(@RequestBody Employee employee){
+        return employeeService.saveEmployee(employee);
+    }
+
+    @PutMapping("/employees")
+    public Employee updateEmployee(@RequestBody Employee employee){
+        return employeeService.saveEmployee(employee);
+    }
+
+    @DeleteMapping("/employees/{id}")
+    public void deleteEmployee(@PathVariable int id){
+        Employee employee = employeeService.getEmployee(id);
+
+        if(employee == null){
+            throw new RuntimeException("Employee not found--" + id);
+        }
+
+        employeeService.deleteEmployee(id);
+    }
+
 }
