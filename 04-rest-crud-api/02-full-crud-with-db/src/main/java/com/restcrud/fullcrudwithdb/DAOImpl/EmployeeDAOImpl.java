@@ -5,7 +5,6 @@ import com.restcrud.fullcrudwithdb.entity.Employee;
 import jakarta.persistence.EntityManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -30,19 +29,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    @Transactional
-    public void addEmployee(Employee employee) {
-        em.persist(employee);
+    public Employee saveEmployee(Employee employee) {
+        return em.merge(employee);
     }
 
     @Override
-    @Transactional
-    public void updateEmployee(Employee employee) {
-        em.merge(employee);
-    }
-
-    @Override
-    @Transactional
     public void deleteEmployee(int id) {
         em.remove(em.find(Employee.class, id));
     }

@@ -4,6 +4,7 @@ import com.restcrud.fullcrudwithdb.DAO.EmployeeDAO;
 import com.restcrud.fullcrudwithdb.entity.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -29,17 +30,14 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void addEmployee(Employee employee) {
-        employeeDAO.addEmployee(employee);
+    @Transactional
+    public Employee saveEmployee(Employee employee) {
+        // if id == 0 then create otherwise update
+        return employeeDAO.saveEmployee(employee);
     }
 
     @Override
-    public void updateEmployee(Employee employee) {
-        employeeDAO.updateEmployee(employee);
-
-    }
-
-    @Override
+    @Transactional
     public void deleteEmployee(int id) {
         employeeDAO.deleteEmployee(id);
     }
