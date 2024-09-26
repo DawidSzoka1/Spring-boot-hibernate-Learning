@@ -49,8 +49,11 @@ public class DemoSecurityConfig {
                         .requestMatchers(HttpMethod.DELETE, "/api/employees/**").hasRole("ADMIN")
                 );
 
-        // ust HTTP basic authentication
+        // use HTTP basic authentication
         http.httpBasic(Customizer.withDefaults());
+
+        // disable Cross Site Request Forgery (CSRF)
+        http.csrf(csrf -> csrf.disable());
 
         return http.build();
     }
