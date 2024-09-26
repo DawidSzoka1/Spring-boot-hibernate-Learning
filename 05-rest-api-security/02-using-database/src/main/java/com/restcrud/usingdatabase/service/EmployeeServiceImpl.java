@@ -2,15 +2,19 @@ package com.restcrud.usingdatabase.service;
 
 import com.restcrud.usingdatabase.entity.Employee;
 import com.restcrud.usingdatabase.repository.EmployeeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
+@Service
 public class EmployeeServiceImpl implements EmployeeService {
 
     private EmployeeRepository employeeRepository;
 
 
+    @Autowired
     public EmployeeServiceImpl(EmployeeRepository theEmployeeRepository) {
         employeeRepository = theEmployeeRepository;
     }
