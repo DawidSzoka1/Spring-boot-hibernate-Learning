@@ -3,6 +3,8 @@ package com.restcrud.usingdatabase.service;
 import com.restcrud.usingdatabase.entity.Employee;
 import com.restcrud.usingdatabase.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -49,5 +51,11 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void deleteById(int theId) {
         employeeRepository.deleteById(theId);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+        return null;
     }
 }
