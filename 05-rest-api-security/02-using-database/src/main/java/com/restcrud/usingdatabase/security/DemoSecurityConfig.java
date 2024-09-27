@@ -21,7 +21,8 @@ public class DemoSecurityConfig {
     }
 
     @Bean
-    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+
         http.authorizeHttpRequests(configurer ->
                 configurer
                         .requestMatchers(HttpMethod.GET, "/api/employees").hasRole("EMPLOYEE")
@@ -29,10 +30,12 @@ public class DemoSecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/employees").hasRole("MANAGER")
                         .requestMatchers(HttpMethod.PUT, "/api/employees").hasRole("MANAGER")
                         .requestMatchers(HttpMethod.DELETE, "/api/employees/**").hasRole("ADMIN")
-                );
+        );
 
+        // use HTTP basic authentication
         http.httpBasic(Customizer.withDefaults());
 
+        // disable Cross Site Request Forgery (CSRF)
         http.csrf(csrf -> csrf.disable());
 
         return http.build();
