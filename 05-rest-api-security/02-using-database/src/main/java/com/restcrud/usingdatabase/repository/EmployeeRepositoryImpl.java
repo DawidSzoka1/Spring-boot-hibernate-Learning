@@ -2,16 +2,22 @@ package com.restcrud.usingdatabase.repository;
 
 import com.restcrud.usingdatabase.entity.Employee;
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.NoResultException;
 import jakarta.persistence.TypedQuery;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
 
-
+@Repository
 public class EmployeeRepositoryImpl implements EmployeeRepository {
     private EntityManager em;
+
+    @Autowired
+    public EmployeeRepositoryImpl(EntityManager em) {
+        this.em = em;
+    }
 
     @Override
     public Employee findByEmployeeEmail(String email) {
@@ -20,7 +26,7 @@ public class EmployeeRepositoryImpl implements EmployeeRepository {
         Employee employee = null;
         try {
             employee = query.getSingleResult();
-        }catch (NoResultException _) {
+        }catch (Exception _) {
 
         }
         return employee;

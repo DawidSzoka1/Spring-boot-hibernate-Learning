@@ -5,7 +5,7 @@ USE `employee_directory`;
 -- Table structure for table `employee`
 --
 
-DROP TABLE IF EXISTS `employee`;
+DROP TABLE IF EXISTS `employee`, `roles`;
 
 CREATE TABLE `employee` (
   `id` int NOT NULL AUTO_INCREMENT,
@@ -13,6 +13,7 @@ CREATE TABLE `employee` (
   `last_name` varchar(45) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `password` varchar(68) not null,
+  `enable` tinyint not null,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 
@@ -22,15 +23,15 @@ CREATE TABLE `employee` (
 
 INSERT INTO `employee` VALUES 
 	(1,'Leslie','Andrews','leslie@luv2code.com',
-	 '{bcrypt}$2a$12$dOoq0naRAh5y8viFzzcb2e4Xj3irtPBZgSYd6J5ic1UyJ4TYAmS02'),
+	 '{bcrypt}$2a$12$dOoq0naRAh5y8viFzzcb2e4Xj3irtPBZgSYd6J5ic1UyJ4TYAmS02', 1),
 	(2,'Emma','Baumgarten','emma@luv2code.com',
-        '{bcrypt}$2a$12$dOoq0naRAh5y8viFzzcb2e4Xj3irtPBZgSYd6J5ic1UyJ4TYAmS02'),
+        '{bcrypt}$2a$12$dOoq0naRAh5y8viFzzcb2e4Xj3irtPBZgSYd6J5ic1UyJ4TYAmS02', 1),
 	(3,'Avani','Gupta','avani@luv2code.com',
-     '{bcrypt}$2a$12$dOoq0naRAh5y8viFzzcb2e4Xj3irtPBZgSYd6J5ic1UyJ4TYAmS02'),
+     '{bcrypt}$2a$12$dOoq0naRAh5y8viFzzcb2e4Xj3irtPBZgSYd6J5ic1UyJ4TYAmS02', 1),
 	(4,'Yuri','Petrov','yuri@luv2code.com',
-     '{bcrypt}$2a$12$dOoq0naRAh5y8viFzzcb2e4Xj3irtPBZgSYd6J5ic1UyJ4TYAmS02'),
+     '{bcrypt}$2a$12$dOoq0naRAh5y8viFzzcb2e4Xj3irtPBZgSYd6J5ic1UyJ4TYAmS02', 1),
 	(5,'Juan','Vega','juan@luv2code.com',
-	 '{bcrypt}$2a$12$dOoq0naRAh5y8viFzzcb2e4Xj3irtPBZgSYd6J5ic1UyJ4TYAmS02');
+	 '{bcrypt}$2a$12$dOoq0naRAh5y8viFzzcb2e4Xj3irtPBZgSYd6J5ic1UyJ4TYAmS02', 1);
 
 
 DROP TABLE IF EXISTS `roles`;
