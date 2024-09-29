@@ -3,6 +3,7 @@ package com.springmvcthymealeaf.thymealeafdemo.controller;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -33,6 +34,19 @@ public class HelloWorldController {
     @RequestMapping("/processForm")
     public String processForm(){
         return "helloworld2";
+    }
+
+    @PostMapping("/processFormVersionThree")
+    public String processFormVersionThree(HttpServletRequest request, Model model){
+        String name = request.getParameter("studentName");
+        // if there isnt parameter called s then the value is null
+        if(name != null){
+            model.addAttribute("name", name.toUpperCase() + " formv3");
+
+        }else {
+            model.addAttribute("name", "no value");
+        }
+        return "helloworld3";
     }
 
 }
