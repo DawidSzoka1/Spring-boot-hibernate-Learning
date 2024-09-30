@@ -20,11 +20,10 @@
     Country:
 
     <select th:field="*{country}">
+        <option th:each="teampCountry : ${countries}" th:value="${teampCountry}" th:text="${teampCountry}">
 
-        <option th:value="Brazil">Brazil</option>
-        <option th:value="France">France</option>
-        <option th:value="Poland">Poland</option>
-        <option th:value="India">India</option>
+        </option>
+
     </select>
 
     <input type="submit" value="submit">
