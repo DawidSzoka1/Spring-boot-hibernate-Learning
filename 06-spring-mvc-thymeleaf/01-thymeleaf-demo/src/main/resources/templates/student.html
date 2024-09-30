@@ -19,7 +19,16 @@ favorite language:
 <br><br>
 Favorite system
 <div>
-    <p th:each="tempSys : ${sadfasf.favoriteSystem}" th:text="${tempSys}"></p>
+
+<!--    <span th:each="tempSys : ${sadfasf.favoriteSystem}" th:text="${tempSys}"></span>-->
+    <span th:text="${sadfasf.favoriteSystem}"></span>
+    <ul>
+        <li th:each="tempSys : ${sadfasf.favoriteSystem}"
+            th:text="${tempSys}"
+        >
+
+        </li>
+    </ul>
 </div>
 </body>
 </html>
