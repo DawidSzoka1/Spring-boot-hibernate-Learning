@@ -4,10 +4,13 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class Customer {
+
+    @NotNull(message = "firstName not null")
+    @Size(min = 1, max = 50, message = "firstName not null")
     private String firstName;
 
     @NotNull(message = "is required!")
-    @Size(min=2, max=50)
+    @Size(min=1, message = "is required!")
     private String lastName;
 
     public Customer() {
@@ -26,11 +29,11 @@ public class Customer {
         this.firstName = firstName;
     }
 
-    public @NotNull @Size(min = 2, max = 50) String getLastName() {
+    public String getLastName() {
         return lastName;
     }
 
-    public void setLastName(@NotNull @Size(min = 2, max = 50) String lastName) {
+    public void setLastName(String lastName) {
         this.lastName = lastName;
     }
 }
