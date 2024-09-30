@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Arrays;
 import java.util.List;
 
 
@@ -20,12 +21,25 @@ public class StudentController {
     @Value("${language}")
     private List<String> language;
 
+    @Value("${system}")
+    private List<String> system;
+
     @GetMapping("/student")
     public String student(Model model) {
-        Student student = new Student("test", "test", "India", "Python");
+        Student student = new Student("test",
+                "test",
+                "India",
+                "Python",
+                Arrays.asList("macOS", "Linux")
+        );
+
         model.addAttribute("student", student);
+
         model.addAttribute("countries", countries);
+
         model.addAttribute("language", language);
+
+        model.addAttribute("system", system);
 
         return "student-form";
     }

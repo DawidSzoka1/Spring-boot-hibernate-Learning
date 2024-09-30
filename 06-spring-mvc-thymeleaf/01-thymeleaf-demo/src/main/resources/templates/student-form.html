@@ -28,8 +28,17 @@
 
     <br>
         Favorite Programming language:
-        <input th:each="teampLanguage : ${language}" th:value="${teampLanguage}"
-               th:text="${teampLanguage}" th:field="*{favoriteLanguage}" type="radio"/>
+        <input th:field="*{favoriteLanguage}" type="radio"
+               th:each="teampLanguage : ${language}"
+               th:value="${teampLanguage}"
+               th:text="${teampLanguage}"
+        />
+<br>
+    Favorite System
+    <input type="checkbox" th:field="*{favoriteSystem}"
+           th:each="tempSys : ${system}"
+           th:text="${tempSys}"
+           th:value="${tempSys}">
 
     <br><br>
     <input type="submit" value="submit">

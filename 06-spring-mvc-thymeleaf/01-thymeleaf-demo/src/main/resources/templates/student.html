@@ -16,5 +16,10 @@ Country:
 favorite language:
 <h3 th:text="${sadfasf.favoriteLanguage}"></h3>
 
+<br><br>
+Favorite system
+<div>
+    <p th:each="tempSys : ${sadfasf.favoriteSystem}" th:text="${tempSys}"></p>
+</div>
 </body>
 </html>

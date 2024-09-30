@@ -1,19 +1,31 @@
 package com.springmvcthymealeaf.thymealeafdemo.model;
 
+import java.util.List;
+
 public class Student {
     private String firstName;
     private String lastName;
     private String country;
     private String favoriteLanguage;
+    private List<String> favoriteSystem;
 
-    public Student(String firstName, String lastName, String country, String favoriteLanguage) {
+    public Student(String firstName, String lastName, String country, String favoriteLanguage, List<String> favoriteSystem ) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.country = country;
         this.favoriteLanguage = favoriteLanguage;
+        this.favoriteSystem = favoriteSystem;
     }
 
     public Student() {
+    }
+
+    public List<String> getFavoriteSystem() {
+        return favoriteSystem;
+    }
+
+    public void setFavoriteSystem(List<String> favoriteSystem) {
+        this.favoriteSystem = favoriteSystem;
     }
 
     public String getFavoriteLanguage() {
