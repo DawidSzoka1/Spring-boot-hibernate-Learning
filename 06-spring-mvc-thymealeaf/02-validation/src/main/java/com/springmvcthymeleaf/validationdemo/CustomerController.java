@@ -16,7 +16,11 @@ public class CustomerController {
 
     @GetMapping("/customer")
     public String customer(Model model) {
-        model.addAttribute("customer", new Customer());
+        //this still work cus constructor dont check if the value is valid
+        Customer c = new Customer("as", "asd", 20);
+
+        model.addAttribute("customer", c);
+        System.out.println(c);
 
         return "customer";
     }
@@ -30,7 +34,8 @@ public class CustomerController {
     //take every input and process it here working only in this Controller
     @InitBinder
     public void initBinder(WebDataBinder binder) {
-        //delete extra white space if only white space then null
+        //delete extra white space
+        // if only white space then null
         StringTrimmerEditor trimmerEditor = new StringTrimmerEditor(true);
         binder.registerCustomEditor(String.class, trimmerEditor);
     }
