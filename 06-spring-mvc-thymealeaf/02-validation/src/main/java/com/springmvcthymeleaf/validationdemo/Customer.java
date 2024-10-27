@@ -1,5 +1,6 @@
 package com.springmvcthymeleaf.validationdemo;
 
+import com.springmvcthymeleaf.validationdemo.validation.CourseCode;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 
@@ -20,20 +21,25 @@ public class Customer {
     @Min(value = 0, message = "value must be greater or equal to zero")
     @Max(value = 10, message = "value must be lower or equal to ten")
     @NotNull(message = "is required!")
-    private int value;
+    private Integer value;
+
+    @CourseCode(value = "code", message = "Must start with code")
+    private String courseCode;
 
     public Customer() {
     }
 
     public Customer(String firstName,
                     String lastName,
-                    @Min(value = 1) @Max(value = 10, message = "test 123")  int value,
-                    String postCode
+                    @Min(value = 1) @Max(value = 10, message = "test 123")  Integer value,
+                    String postCode,
+                    String courseCode
     ) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.value = value;
         this.postCode = postCode;
+        this.courseCode = courseCode;
     }
 
     public String getFirstName() {
@@ -53,11 +59,11 @@ public class Customer {
     }
 
 
-    public int getValue() {
+    public Integer getValue() {
         return value;
     }
 
-    public void setValue(@Min(value = 0) @Max(value = 10, message = "setter error") int value) {
+    public void setValue(@Min(value = 0) @Max(value = 10, message = "setter error") Integer value) {
         this.value = value;
     }
 
@@ -69,6 +75,14 @@ public class Customer {
         this.postCode = postCode;
     }
 
+    public String getCourseCode() {
+        return courseCode;
+    }
+
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
+    }
+
     @Override
     public String toString() {
         return "Customer{" +
@@ -76,6 +90,7 @@ public class Customer {
                 ", lastName='" + lastName + '\'' +
                 ", value=" + value +
                 ", postCode='" + postCode + '\'' +
+                ", courseCode='" + courseCode + '\'' +
                 '}';
     }
 }

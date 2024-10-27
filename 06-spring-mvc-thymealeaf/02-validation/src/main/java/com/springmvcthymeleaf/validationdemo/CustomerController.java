@@ -17,7 +17,7 @@ public class CustomerController {
     @GetMapping("/customer")
     public String customer(Model model) {
         //this still work cus constructor dont check if the value is valid
-        Customer c = new Customer("as", "asd", 20, "1232g");
+        Customer c = new Customer("as", "asd", 20, "1232g", "code123");
 
         model.addAttribute("customer", c);
         System.out.println(c);
@@ -45,7 +45,7 @@ public class CustomerController {
             @Valid @ModelAttribute("customer") Customer customer,
             BindingResult bindingResult // results of validation
     ) {
-        System.out.println(customer);
+        System.out.println(bindingResult);
         if(bindingResult.hasErrors()) {
             return "customer";
         }
