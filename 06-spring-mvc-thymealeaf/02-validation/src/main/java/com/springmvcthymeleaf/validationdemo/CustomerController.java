@@ -17,7 +17,7 @@ public class CustomerController {
     @GetMapping("/customer")
     public String customer(Model model) {
         //this still work cus constructor dont check if the value is valid
-        Customer c = new Customer("as", "asd", 20);
+        Customer c = new Customer("as", "asd", 20, "1232g");
 
         model.addAttribute("customer", c);
         System.out.println(c);
