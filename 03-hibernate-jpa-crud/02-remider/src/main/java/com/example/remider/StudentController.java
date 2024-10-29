@@ -1,18 +1,24 @@
 package com.example.remider;
 
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class StudentController {
 
+    private StudentDaoImpl studentDao;
+
+    @Autowired
+    public StudentController(StudentDaoImpl studentDao) {
+        this.studentDao = studentDao;
+    }
     @GetMapping("")
     public String index(Model model) {
+        model.addAttribute("students", studentDao.findAll());
         return "index";
     }
 
@@ -24,7 +30,26 @@ public class StudentController {
 
     @PostMapping("/add/student")
     public String addStudent(@Valid Student s, BindingResult result) {
+        if (result.hasErrors()) {
+            return "student-add";
+        }
+        studentDao.save(s);
         return "student-post";
+    }
+
+    @DeleteMapping("/student/{id}")
+    public String deleteStudent(@PathVariable int id) {
+        Student s = studentDao.findById(id);
+        if (s == null) {
+            return "redirect:/index";
+        }
+        studentDao.delete(s);
+        return "redirect:/index";
+    }
+    @GetMapping("/student/{id}")
+    public String getStudent(@PathVariable int id, Model model) {
+        model.addAttribute("student", studentDao.findById(id));
+        return "student-view";
     }
 
 }
