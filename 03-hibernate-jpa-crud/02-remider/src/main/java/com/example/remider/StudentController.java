@@ -16,7 +16,8 @@ public class StudentController {
     public StudentController(StudentDaoImpl studentDao) {
         this.studentDao = studentDao;
     }
-    @GetMapping("")
+
+    @GetMapping("/index")
     public String index(Model model) {
         model.addAttribute("students", studentDao.findAll());
         return "index";
@@ -46,10 +47,10 @@ public class StudentController {
         studentDao.delete(s);
         return "redirect:/index";
     }
-    @GetMapping("/student/{id}")
-    public String getStudent(@PathVariable int id, Model model) {
-        model.addAttribute("student", studentDao.findById(id));
-        return "student-view";
-    }
+//    @GetMapping("/student/{id}")
+//    public String getStudent(@PathVariable int id, Model model) {
+//        model.addAttribute("student", studentDao.findById(id));
+//        return "student-view";
+//    }
 
 }

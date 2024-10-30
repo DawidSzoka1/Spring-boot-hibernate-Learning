@@ -3,7 +3,7 @@ package com.example.remider;
 
 import java.util.List;
 
-public interface StudenDao {
+public interface StudentDao {
     void save(Student student);
     void update(Student student);
     void delete(Student student);

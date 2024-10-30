@@ -9,14 +9,15 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 @Repository
-public class StudentDaoImpl  implements StudenDao{
+public class StudentDaoImpl  implements StudentDao{
 
-    EntityManager entityManager;
+    private EntityManager entityManager;
 
     @Autowired
     public StudentDaoImpl(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
+
     @Override
     @Transactional
     public void save(Student student) {
