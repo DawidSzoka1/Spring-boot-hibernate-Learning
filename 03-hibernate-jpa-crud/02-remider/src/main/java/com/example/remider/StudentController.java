@@ -35,10 +35,10 @@ public class StudentController {
             return "student-add";
         }
         studentDao.save(s);
-        return "student-post";
+        return "index";
     }
 
-    @DeleteMapping("/student/{id}")
+    @PostMapping("/student/{id}")
     public String deleteStudent(@PathVariable int id) {
         Student s = studentDao.findById(id);
         if (s == null) {
@@ -47,10 +47,15 @@ public class StudentController {
         studentDao.delete(s);
         return "redirect:/index";
     }
-//    @GetMapping("/student/{id}")
-//    public String getStudent(@PathVariable int id, Model model) {
-//        model.addAttribute("student", studentDao.findById(id));
-//        return "student-view";
-//    }
+
+    @GetMapping("/student/{id}")
+    public String getStudent(@PathVariable int id, Model model) {
+        Student s = studentDao.findById(id);
+        if(s == null) {
+            return "redirect:/index";
+        }
+        model.addAttribute("student", s);
+        return "student-view";
+    }
 
 }

@@ -13,7 +13,10 @@
     Last name: <input type="text" th:field="*{lastName}">
     <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
     <br><br>
-    Password(*):<input type="text" th:field="*{password}">
+    Email: <input type="text" th:field="*{email}">
+    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+    <br><br>
+    Password(*):<input type="password" th:field="*{password}">
     <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
 
     <button type="submit">add student</button>

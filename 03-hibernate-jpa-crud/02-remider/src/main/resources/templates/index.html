@@ -7,9 +7,9 @@
 <body>
 Lista studentow:
 <ul>
-    <th:block th:each="student: ${students}">
-        <li th:text="${student.getFirstName()} ${student.getLastName()}"></li>
-    </th:block>
+    <li th:each="student : ${students}">
+        <a th:href="@{|student/${student.getId()}|}" th:text="${student.getLastName()} + ' ' + ${student.getEmail()}"></a>
+    </li>
 </ul>
 <a th:href="@{/add/student}">Dodaj studenta</a>
 </body>

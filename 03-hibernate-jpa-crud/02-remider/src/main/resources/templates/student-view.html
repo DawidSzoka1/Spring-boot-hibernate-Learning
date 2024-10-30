@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Email: <span th:text="${student.getEmail()}">
+
+</span>
+<br><br>
+Name: <span th:text="${student.firstName} + ' ' + ${student.lastName}">
+</span>
+
+<form th:method="post" th:action="@{|/student/${student.getId()}|}">
+    <button type="submit">Delete Student</button>
+</form>
+</body>
+</html>
