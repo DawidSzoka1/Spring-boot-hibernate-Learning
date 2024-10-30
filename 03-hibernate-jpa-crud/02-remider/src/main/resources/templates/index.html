@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-
+Lista studentow:
+<ul>
+    <th:block th:each="student: ${students}">
+        <li th:text="${student.getFirstName()} ${student.getLastName()}"></li>
+    </th:block>
+</ul>
+<a th:href="@{/add/student}">Dodaj studenta</a>
 </body>
 </html>
