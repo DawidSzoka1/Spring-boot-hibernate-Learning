@@ -35,7 +35,7 @@ public class StudentController {
             return "student-add";
         }
         studentDao.save(s);
-        return "index";
+        return "redirect:/index";
     }
 
     @PostMapping("/student/{id}")

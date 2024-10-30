@@ -1,5 +1,6 @@
 package com.example.remider;
 
+import com.example.remider.validation.Email;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -26,6 +27,7 @@ public class Student {
 
     @Column(name = "email")
     @NotNull(message = "is required!")
+    @Email
     private String email;
 
     public Student() {
