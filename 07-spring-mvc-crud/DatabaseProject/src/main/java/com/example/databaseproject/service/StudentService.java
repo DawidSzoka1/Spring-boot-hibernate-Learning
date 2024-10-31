@@ -6,7 +6,7 @@ import java.util.Optional;
 
 public interface StudentService {
     Optional<Student> getStudentById(int id);
-    List<Student> getAllStudents();
+    List<Student> findAll();
     void saveStudent(Student student);
     void updateStudent(Student student);
     void deleteStudent(int id);
