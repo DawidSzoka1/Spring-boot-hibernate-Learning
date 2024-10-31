@@ -1,7 +1,7 @@
 package com.example.remider;
 
 import jakarta.persistence.EntityManager;
-import jakarta.persistence.Query;
+import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -43,7 +43,7 @@ public class StudentDaoImpl  implements StudentDao{
 
     @Override
     public List<Student> findAll() {
-        Query query = entityManager.createQuery("select s from Student s");
+        TypedQuery<Student> query = entityManager.createQuery("select s from Student s", Student.class);
         return query.getResultList();
     }
 }
