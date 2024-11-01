@@ -58,4 +58,9 @@ public class StudentServiceImpl implements StudentService {
     public Optional<Student> getStudentByEmail(String email) {
         return studentRepository.findByEmail(email);
     }
+
+    @Override
+    public List<Student> findAllByOrderByLastNameAsc() {
+        return studentRepository.findAllByOrderByLastNameAsc();
+    }
 }

@@ -11,4 +11,5 @@ public interface StudentService {
     void updateStudent(Student student);
     void deleteStudent(int id);
     Optional<Student> getStudentByEmail(String email);
+    List<Student> findAllByOrderByLastNameAsc();
 }
