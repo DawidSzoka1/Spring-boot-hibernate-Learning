@@ -42,7 +42,7 @@ public class StudentController {
         return "redirect:/student/list";
     }
 
-    @DeleteMapping("/{id}")
+    @GetMapping("/delete/{id}")
     public String deleteStudent(@PathVariable int id) throws Exception {
         Optional<Student> student = studentService.getStudentById(id);
         if(student.isPresent()) {

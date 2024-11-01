@@ -14,10 +14,11 @@
 <form action="#" th:object="${student}"
       th:method="post" th:action="@{/student/save}"
       method="post">
+    <input type="hidden" th:field="*{id}">
     First name: <input th:field="*{firstName}" type="text" placeholder="First name" class="form-control mb-4 w-25">
     last name: <input th:field="*{lastName}" type="text" placeholder="Last name" class="form-control mb-4 w-25">
     email: <input th:field="*{email}" type="text" placeholder="email" class="form-control mb-4 w-25">
-    password: <input th:field="*{password}" type="password" class="form-control mb-4 w-25">
+    password: <input th:field="*{password}" type="text" class="form-control mb-4 w-25">
     <button type="submit" class="btn btn-info col-2">save</button>
 
 </form>
