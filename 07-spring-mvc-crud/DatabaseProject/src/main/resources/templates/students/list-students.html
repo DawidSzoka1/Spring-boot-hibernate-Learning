@@ -19,7 +19,8 @@
                 <th>Last Name</th>
                 <th>Email Name</th>
                 <!--just to check if hash is correct-->
-                <th>Password Name</th>
+                <th>Password</th>
+                <th>option</th>
             </tr>
         </thead>
         <tbody>
@@ -28,6 +29,8 @@
                 <th th:text="${student.lastName}"></th>
                 <th th:text="${student.email}"></th>
                 <th th:text="${student.password}"></th>
+                <th><a th:href="@{/student/delete/{id}(id=${student.getId()})}" _method="delete" class="btn btn-warning">Delete</a>
+                <a th:href="@{/student/update/{id}(id=${student.getId()})}" class="btn btn-info">Update</a></th>
             </tr>
         </tbody>
     </table>
